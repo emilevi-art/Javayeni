@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emil-in CV-si lmao</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: black;
+    }
+
+    .main {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .left-side {
+      background-color: skyblue;
+      width: 30%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .right-side {
+      width: 70%;
+      padding: 20px 40px;
+      box-sizing: border-box;
+      background-color: white;
+    }
+
+    .profile-image img {
+      width: 100px;
+      border-radius: 150%;
+      margin-bottom: 100px;
+    }
+
+    .icon {
+      width: 50px;
+      margin-right: 20px;
+    }
+
+    .dropdown {
+      margin-bottom: 20px;
+    }
+
+    .dropdown-header {
+      background-color: lightgray; /* əvəz etdi: #eee */
+      padding: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .dropdown-content {
+      display: none;
+      padding: 10px;
+      background-color: white; /* əvəz etdi: #fff */
+    }
+
+    button {
+      background-color: steelblue; /* əvəz etdi: #008CBA */
+      color: white;
+      padding: 5px 10px;
+      margin-top: 5px;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: cadetblue; /* əvəz etdi: #0073a1 */
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <!-- Sol Tərəf -->
+    <div class="left-side">
+      <div class="profile-image">
+        <img src="c:\Users\haciy\OneDrive\Şəkillər\Ekran təsvirləri\Screenshot 2025-04-11 171204.png" alt="Profile Photo" />
+      </div>
+
+      <h3>Contact</h3>
+      <p><img src="https://img.icons8.com/ios-filled/50/000000/phone.png" class="icon" /> +9945580716849</p>
+      <p><img src="https://img.icons8.com/ios-filled/50/000000/new-post.png" class="icon" /> hajiyevemil024@gmail.com</p>
+      <p><img src="https://img.icons8.com/ios-filled/50/000000/marker.png" class="icon" /> Baku, Azerbaijan</p>
+
+      <div class="dropdown">
+        <div class="dropdown-header" onclick="toggleSection('education', this)">[+] Education</div>
+        <div class="dropdown-content" id="education">
+          <div>
+            <p>2024 - 2028</p>
+            <p>Azerbaijan Technical University</p>
+            <p>Bachelor in Cyber Security</p>
+          </div>
+        </div>
+        <button onclick="addEducation()">+ Add Education</button>
+      </div>
+
+      <div class="dropdown">
+        <div class="dropdown-header" onclick="toggleSection('skills', this)">[+] Skills</div>
+        <div class="dropdown-content" id="skills">
+          <p>Python (Basic)</p>
+          <p>HTML</p>
+          <p>C++</p>
+          <p>Problem Solving</p>
+          <p>Teamwork</p>
+          <p>Time Management</p>
+          <p>Leadership</p>
+        </div>
+        <button onclick="addSkill()">+ Add Skill</button>
+      </div>
+
+      <h3>Languages</h3>
+      <p>Azerbaijani (Native)</p>
+      <p>English (B2-C1)</p>
+      <p>Russian (low)</p>
+    </div>
+
+    <!-- Sağ Tərəf -->
+    <div class="right-side">
+      <div class="name-job">
+        <h2><strong>Hajiyev</strong> Emil</h2>
+        <h4>Cyber Security Specialist</h4>
+      </div>
+
+      <div>
+        <h3>Profile</h3>
+        <p>
+          Motivated Information Security student with strong interest in ethical hacking, system protection, and cybersecurity.
+          Currently studying at Azerbaijan Technical University and seeking opportunities to grow academically and practically in the cybersecurity field.
+        </p>
+      </div>
+
+      <div class="dropdown">
+        <div class="dropdown-header" onclick="toggleSection('experience', this)">[+] Work Experience</div>
+        <div class="dropdown-content" id="experience">
+          <div>
+            <p><strong>CyberSecure Tech</strong> (2023 - 2024)</p>
+            <p>Intern – Security Analyst</p>
+            <p>Assisted in penetration testing, log monitoring, and threat detection tasks under supervision.</p>
+          </div>
+          <div>
+            <p><strong>CodeLab Academy</strong> (2022)</p>
+            <p>Student Project Contributor</p>
+            <p>Built a secure login system using Python and HTML with a team.</p>
+          </div>
+        </div>
+        <button onclick="addExperience()">+ Add Experience</button>
+      </div>
+
+      <div>
+        <h3>Reference</h3>
+        <p>Orxan Memmedov</p>
+        <p>Senior Lecturer, Azerbaijan Technical University</p>
+        <p>Email: orxan.memmedov@aztu.edu.az</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSection(sectionId, element) {
+      const section = document.getElementById(sectionId);
+      const isHidden = section.style.display === "none" || section.style.display === "";
+      section.style.display = isHidden ? "block" : "none";
+
+      if (element) {
+        element.textContent = (isHidden ? "[-] " : "[+] ") + element.textContent.slice(4);
+      }
+    }
+
+    function addEducation() {
+      const year = prompt("Təhsil ili (məsələn: 2025 - 2029):");
+      const uni = prompt("Universitetin adı:");
+      const field = prompt("İxtisas:");
+      if (year && uni && field) {
+        const edu = document.createElement("div");
+        edu.innerHTML = `<p>${year}</p><p>${uni}</p><p>${field}</p>`;
+        document.getElementById("education").appendChild(edu);
+      }
+    }
+
+    function addSkill() {
+      const skillName = prompt("Yeni bacarığın adını daxil et:");
+      if (skillName) {
+        const skill = document.createElement("p");
+        skill.textContent = skillName;
+        document.getElementById("skills").appendChild(skill);
+      }
+    }
+
+    function addExperience() {
+      const company = prompt("Şirkətin adı:");
+      const year = prompt("İş ili:");
+      const position = prompt("Vəzifə:");
+      const description = prompt("Qısa təsvir:");
+      if (company && year && position && description) {
+        const exp = document.createElement("div");
+        exp.innerHTML = `
+          <p><strong>${company}</strong> (${year})</p>
+          <p>${position}</p>
+          <p>${description}</p>
+        `;
+        document.getElementById("experience").appendChild(exp);
+      }
+    }
+  </script>
+</body>
+</html>
+
